@@ -1,0 +1,136 @@
+.header {
+  background-image: url('./pics/Stars.jpg');
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  background-color: black;
+  color: white;
+  height: 100px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.main {
+  background-image: url('./pics/earth2.jpg')!important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+}
+
+
+
+.images {
+  cursor: pointer;
+  height: 300px;
+  width: 30%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.add-bar {
+  margin-top: 10px;
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  margin-left: 15px;
+  width: 33%;
+  height: 30px;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+
+.one {
+  width: 50%;
+  margin-right: 15px;
+}
+
+.two {
+  width: 50%;
+  margin-left: 15px;
+}
+
+.three {
+  width: 50%;
+  margin-right: 15px;
+}
+
+.four {
+  width: 50%;
+  margin-left: 15px;
+}
+
+.above-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: black;
+  color: blue;
+  font-size: 18px;
+}
+
+.footer {
+  height: 100px;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.list {
+  padding-top: 20px;
+  padding-right: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+}
+
+.list li {
+  padding: 10px;
+}
+
+.stuff {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-header {
+
+}
+
+.modal-body {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.modal-img {
+  height: 500px;
+  width: 100%;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

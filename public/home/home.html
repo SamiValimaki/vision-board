@@ -1,0 +1,144 @@
+<div class="header">
+  <span>VISION BOARD</span>
+</div>
+
+<div class="main">
+  <div class="top">
+    <div class="one">
+      <div class="add-bar">
+        Wealth (1) <button ng-click="initImageAdd(1)" data-toggle="modal" data-target="#add-image-modal" class="pull-right btn btn-sm btn-default">Add</button>
+      </div>
+      <div ng-repeat="image in images | filter: {category: '1'}">
+        <img ng-click="setBigImage(image,$index)" data-toggle="modal" data-target="#big-image-modal" class="images col-sm-4 col-sm-4" src="{{image.imageurl}}" alt="">
+      </div>
+    </div>
+    <div class="two">
+      <div class="add-bar">
+        Personal Goals (2) <button ng-click="initImageAdd(2)" data-toggle="modal" data-target="#add-image-modal" class="pull-right btn btn-sm btn-default">Add</button>
+      </div>
+      <div ng-repeat="image in images | filter: {category: '2'}">
+        <img ng-click="setBigImage(image,$index)" data-toggle="modal" data-target="#big-image-modal" class="images col-sm-4 col-sm-4" src="{{image.imageurl}}" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+  <div class="three">
+    <div class="add-bar">
+      Long-Term (3) <button ng-click="initImageAdd(3)" data-toggle="modal" data-target="#add-image-modal" class="pull-right btn btn-sm btn-default">Add</button>
+    </div>
+    <div ng-repeat="image in images | filter: {category: '3'}">
+      <img ng-click="setBigImage(image,$index)" data-toggle="modal" data-target="#big-image-modal" class="images col-sm-4 col-sm-4" src="{{image.imageurl}}" alt="">
+    </div>
+  </div>
+    <div class="four">
+      <div class="add-bar">
+        Bucket List (4)<button ng-click="initImageAdd(4)" data-toggle="modal" data-target="#add-image-modal" class="pull-right btn btn-sm btn-default">Add</button>
+      </div>
+      <div ng-repeat="image in images | filter: {category: '4'}">
+        <img ng-click="setBigImage(image,$index)" data-toggle="modal" data-target="#big-image-modal" class="images col-sm-4 col-sm-4" src="{{image.imageurl}}" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="above-footer">
+    Created By Sami Valimaki
+</div>
+
+<div class="footer">
+    <ul class="list">
+      <li>
+        <a target="_blank" title="follow me on Facebook" href="http://www.facebook.com/SamValimaki"><img alt="" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
+      </li>
+      <li>
+          <a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/SamiValimaki"><img alt="" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0></a>
+      </li>
+      <li>
+        <a target="_blank" title="follow me on Instagram" href="http://www.instagram.com/samvalimaki"><img alt="" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
+      </li>
+    </ul>
+  </div>
+
+<div class="modal" id="big-image-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="stuff">
+          <button ng-click="editNotes(note, bigImage.imageid)">Submit</button>
+          <!-- Close Button -->
+          <button class="btn btn-xs btn-warning" type="button" data-dismiss="modal">X</button>
+        </div>
+          <form>
+            <input ng-model="note"></input>
+          <!-- <button class="btn btn-xs btn-warning" ng-click="deleteImage(image.imageid,$index)">X</button> -->
+          </form>
+        <h3 class="modal-title">{{bigImage.note}}</h3>
+      </div>
+
+      <div class="modal-body" id="modal-body">
+        <img class="modal-img" src="{{bigImage.imageurl}}" alt="">
+      </div>
+      <div class="modal-footer">
+        <!-- Previous Image Button -->
+        <button ng-disabled="imageIndex == 0" ng-click="prevBigImage()" class="btn btn-primary" type="button">Previous</button>
+        <!-- Edit Button -->
+        <button class="btn btn-warning" type="button" ng-click="">Edit</button>
+        <!-- Delete Button -->
+        <button class="btn btn-warning" type="button" ng-click="setGonnerImage(bigImage)" data-toggle="modal" data-target="#delete-image-modal">Delete</button>
+        <!-- Next Image Button -->
+        <button ng-disabled="imageIndex >= images.length -1" ng-click="nextBigImage()" class="btn btn-primary" type="button">Next</button>
+        <!-- <button class="btn btn-default" type="button" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="add-image-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Image/Notes</h3>
+      </div>
+
+      <div class="modal-body" id="modal-body">
+        <div class="row">
+          <form class="form-horizontal" id="addImageForm" novalidate>
+            <div class="form-group">
+              <div class="col-sm-6">
+                <label class="control-label">Image URL</label>
+                <input type="text" ng-model="newImage.url" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-6">
+                <label class="control-label">Notes</label>
+                <textarea rows="3" ng-model="newImage.notes" required></textarea>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" type="button" data-dismiss="modal">Cancel</button>
+        <button ng-disabled="addImageForm.$invalid" data-dismiss="modal" ng-click="postImages(newImage)" class="btn btn-primary" type="button">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="delete-image-modal" tabindex="" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Delete Image/Note</h3>
+      </div>
+      <div class="modal-body" id="modal-body">
+        Are you sure you want to delete this image?
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" type="button" data-dismiss="modal">Cancel</button>
+        <button ng-click="deleteImage(gonnerImage.imageid)" class="btn btn-default" type="button" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
